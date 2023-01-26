@@ -16,10 +16,14 @@ This is a program made in ReactJS, that uses AXIOS for navigating the usage of a
 ## Change Log
 <!-- EG:
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+1-25-2023 8:30 - Skeleton of website is working, but with a 403 forbidden code response from the server.
 
+1-25-2023 8:45 - 403 forbidden fixed, locally run version does now collect the info object from the API. Nice.
 
 
 
 ## Credit and Collaborations
 Yurii Hlukhyi, Brenden Moore, and Anthony Lopez, fellow Code Fellows Students, were present and assisted in the creation of the general logic flowchart located in the below link, and unused in the SRC files of this project.
 https://imgur.com/a/hCJdpFX
+
+Majority of code uses Instructor Roger Reyes's code as a template and baseline, of Codefellows.
