@@ -1,8 +1,20 @@
 import React from "react";
 
-class Header extends React.Component{
-  render(){
-    return(<h1>City Explorer</h1>)
+class Header extends React.Component {
+  render() {
+
+    //header styling rules
+    const styling = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      padding: ".5em",
+      fontFamily: "Arial",
+      width: "100%",
+      textAlign: "center",
+    };
+
+    return (<h1 style={styling}>City Explorer</h1>)
+
   }
 }
 

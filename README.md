@@ -20,7 +20,9 @@ This is a program made in ReactJS, that uses AXIOS for navigating the usage of a
 
 1-25-2023 8:45 - 403 forbidden fixed, locally run version does now collect the info object from the API. Nice.
 
+1-26-2023 8:35 - Added map that appears when you do a search for a city.
 
+1-26-2023 8:50 - added very basic styling skeleton to webpage, that way I can refine it further over time.
 
 ## Credit and Collaborations
 Yurii Hlukhyi, Brenden Moore, and Anthony Lopez, fellow Code Fellows Students, were present and assisted in the creation of the general logic flowchart located in the below link, and unused in the SRC files of this project.

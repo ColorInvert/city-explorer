@@ -1,8 +1,44 @@
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import React from 'react';
 import axios from "axios";
+
+const locationH2Styling = {
+  color: "white",
+  backgroundColor: "DodgerBlue",
+  padding: ".5em",
+  fontFamily: "Arial",
+  width: "100%",
+  textAlign: "center",
+};
+
+const imgTagStyling = {
+  color: "white",
+  backgroundColor: "DodgerBlue",
+  padding: ".5em",
+  fontFamily: "Arial",
+  width: "70%",
+  textAlign: "center",
+};
+const pTagStyling = {
+  color: "white",
+  backgroundColor: "DodgerBlue",
+  padding: ".5em",
+  fontFamily: "Arial",
+  width: "100%",
+  textAlign: "center",
+};
+const containerStyling = {
+  color: "white",
+  backgroundColor: "DodgerBlue",
+  padding: ".5em",
+  fontFamily: "Arial",
+  width: "100%",
+  textAlign: "center",
+};
+
 
 class Main extends React.Component {
   constructor(props) {
@@ -14,10 +50,16 @@ class Main extends React.Component {
       apiData: {},
       restaurantData: [],
       locationData: [],
-      weatherData: []
+      weatherData: [],
 
     }
   }
+
+
+
+
+
+
 
   //called each time a key is hit in the text entry. Updates the Requested Location state constantly as user types.
   handleKeypress = e => {
@@ -35,14 +77,17 @@ class Main extends React.Component {
     e.preventDefault();
     let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.requestedLocation}&format=json`
 
+
+
     let response = await axios.get(url);
 
     console.log("PROOF OF LIFE")
     console.log(response.data[0]);
 
+
     this.setState({
       displayingInfo: true,
-      locationData: response.data[0]
+      locationData: response.data[0],
     })
 
   };
@@ -52,7 +97,7 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <Container>
+        <Container style={containerStyling}>
           <Form>
             <Form.Group>
               <Form.Label>Please enter a city to explore.</Form.Label>
@@ -65,12 +110,15 @@ class Main extends React.Component {
         </Container>
         {this.state.displayingInfo &&
           <>
-            <h2>{this.state.locationData.display_name}</h2>
-            <p>Latitude:{this.state.locationData.lat}  Longitude:{this.state.locationData.lon}</p>
+            <h2 style={locationH2Styling}>{this.state.locationData.display_name}</h2>
+
+            <img style={imgTagStyling} alt={'your requested map'} src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.locationData.lat},${this.state.locationData.lon}&zoom=13`} />
+
+            <p style={pTagStyling}>Latitude:{this.state.locationData.lat}  Longitude:{this.state.locationData.lon}</p>
           </>
         }
 
-        
+
 
       </>
     );
