@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import React from 'react';
 import axios from "axios";
-
+import Weather from './Weather'
 const locationH2Styling = {
   color: "white",
   backgroundColor: "DodgerBlue",
@@ -41,19 +41,23 @@ const containerStyling = {
 
 
 class Main extends React.Component {
+
+
+
   constructor(props) {
     super(props);
 
     this.state = {
       displayingInfo: false,
+      displayingWeatherInfo: false,
       requestedLocation: '',
       apiData: {},
       restaurantData: [],
       locationData: [],
       weatherData: [],
 
-    }
-  }
+    };
+  };
 
 
 
@@ -77,20 +81,32 @@ class Main extends React.Component {
     e.preventDefault();
     let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.requestedLocation}&format=json`
 
-
+    let weatherUrl = `http://localhost:3002/weather?searchQuery=${this.state.requestedLocation}`
 
     let response = await axios.get(url);
 
-    console.log("PROOF OF LIFE")
+    console.log("PROOF OF LIFE");
     console.log(response.data[0]);
 
 
     this.setState({
       displayingInfo: true,
       locationData: response.data[0],
-    })
+    });
+
+    let weatherResponse = await axios.get(weatherUrl);
+
+    console.log(weatherResponse);
+
+    this.setState({
+      displayingWeatherInfo: true,
+      weatherData: weatherResponse.data
+    });
 
   };
+
+
+
 
 
 
@@ -115,6 +131,20 @@ class Main extends React.Component {
             <img style={imgTagStyling} alt={'your requested map'} src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.locationData.lat},${this.state.locationData.lon}&zoom=13`} />
 
             <p style={pTagStyling}>Latitude:{this.state.locationData.lat}  Longitude:{this.state.locationData.lon}</p>
+
+
+
+            <p style={pTagStyling}>Historical forecasts: </p>
+            {this.state.weatherData.map(datapoint => <Weather 
+            
+            datapoint={datapoint} 
+            
+            key={datapoint._id}/>)}
+
+
+
+
+
           </>
         }
 
