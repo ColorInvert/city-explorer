@@ -29,7 +29,7 @@ class Weather extends React.Component {
       <>
 
 
-        <p style={pTagStyling}>low of PUT LOW HERE high of PUT HIGH HERE with {this.props.datapoint.weatherDescription} date: {this.props.datapoint.weatherDate}</p>
+        <p style={pTagStyling}>On the date {this.props.datapoint.weatherDate}, this place had a low of {this.props.datapoint.weatherLow} Celsius, a high of {this.props.datapoint.weatherHigh} Celsius, with {this.props.datapoint.weatherDescription}.</p>
 
       </>
     );
