@@ -1,3 +1,4 @@
+//!Depth level 1. child of App.
 import React from "react";
 
 class Footer extends React.Component {

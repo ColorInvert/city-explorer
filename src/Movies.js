@@ -1,35 +1,26 @@
+//!Depth level 2. child of Main.
 import React from 'react';
+import SingleMovie from './SingleMovie';
 
-const pTagStyling = {
-  color: "white",
-  backgroundColor: "red",
-  padding: ".5em",
-  fontFamily: "Arial",
-  width: "100%",
-  textAlign: "center",
-};
 
 
 class Movies extends React.Component {
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     weatherData: [],
-  //   }
-  // }
-
 
 
 
 
 
   render() {
+
+    console.log(this.props.moviesData)
     return (
       <>
 
+        {this.props.moviesData.map(datapoint => < SingleMovie
+          datapoint={datapoint}
+          key={datapoint._id} />)
+        }
 
-        <p style={pTagStyling}>there's a film called {this.props.datapoint.title} with the following overview: "{this.props.datapoint.overview}" that was released on {this.props.datapoint.releaseDate} to a popularity score of {this.props.datapoint.popularity}, and a star rating of {this.props.datapoint.averageVotes} stars out of 10, with a total vote count of {this.props.datapoint.totalVotes}. {this.props.datapoint.imgUrl}</p>
 
       </>
     );

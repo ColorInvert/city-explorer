@@ -1,4 +1,4 @@
-
+//!Depth level 1. child of App.
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -58,6 +58,8 @@ class Main extends React.Component {
       locationData: [],
       weatherData: [],
       moviesData: [],
+      handleWeather: {},
+      handleMovies: {}
 
     };
   };
@@ -120,8 +122,6 @@ class Main extends React.Component {
 
     let response = await axios.get(url);
 
-    console.log("PROOF OF LIFE");
-
 
     this.setState({
       displayingInfo: true,
@@ -166,17 +166,9 @@ class Main extends React.Component {
 
 
             <p style={pTagStyling}>Historical forecasts: </p>
-            {this.state.weatherData.map(datapoint => <Weather
+            {this.state.weatherData && <Weather weatherData={this.state.weatherData} />}
 
-              datapoint={datapoint}
-
-              key={datapoint._id} />)}
-
-            {this.state.moviesData.map(datapoint => <Movies
-
-              datapoint={datapoint}
-
-              key={datapoint._id} />)}
+            {this.state.moviesData && <Movies moviesData={this.state.moviesData} />}
 
 
 
